@@ -92,6 +92,7 @@
     "/categories" : {
       "get" : {
         "tags" : [ "categories" ],
+        "operationId" : "listCategories",
         "summary" : "Get all categories",
         "responses" : {
           "200" : {
