@@ -3,7 +3,10 @@
   "info" : {
     "version" : "1.0.0",
     "title" : "Revobet Sports API",
-    "description" : "Retrieve Sports, Categories/Countries, Leagues/Tournaments"
+    "description" : "Retrieve Sports, Categories/Countries, Leagues/Tournaments",
+    "license" : {
+      "name" : "MIT"
+    }
   },
   "paths" : {
     "/metrics" : {
