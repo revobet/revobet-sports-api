@@ -88,10 +88,48 @@
           }
         }
       }
+    },
+    "/categories" : {
+      "get" : {
+        "tags" : [ "categories" ],
+        "summary" : "Get all categories",
+        "responses" : {
+          "200" : {
+            "description" : "List of categories",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Categories"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
     "schemas" : {
+      "Category" : {
+        "required" : [ "name", "sport_id" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "sport_id" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Categories" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Category"
+        }
+      },
       "Sport" : {
         "required" : [ "name" ],
         "properties" : {
