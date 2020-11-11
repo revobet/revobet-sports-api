@@ -1,0 +1,126 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Revobet Sports API",
+    "description" : "Retrieve Sports, Categories/Countries, Leagues/Tournaments"
+  },
+  "paths" : {
+    "/metrics" : {
+      "get" : {
+        "summary" : "The metrics",
+        "operationId" : "metrics",
+        "tags" : [ "metrics" ],
+        "responses" : {
+          "200" : {
+            "description" : "All metrics for scaling",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sports" : {
+      "get" : {
+        "summary" : "List of all sports",
+        "operationId" : "listSports",
+        "tags" : [ "sports" ],
+        "responses" : {
+          "200" : {
+            "description" : "A list of all sports",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Sports"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a sport",
+        "operationId" : "createSport",
+        "tags" : [ "sports" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Sport"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Null response"
+          },
+          "default" : {
+            "description" : "Unexpected Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Sport" : {
+        "required" : [ "name" ],
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Sports" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Sport"
+        }
+      },
+      "Error" : {
+        "required" : [ "code", "message" ],
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
